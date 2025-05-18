@@ -4,13 +4,17 @@ import path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  root: '.', // Deixa explícito que o projeto parte da raiz
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+      '@': path.resolve(__dirname, './src')
+    }
   },
   build: {
     outDir: 'dist',
     emptyOutDir: true,
+    rollupOptions: {
+      input: path.resolve(__dirname, 'index.html')
+    }
   }
 })
